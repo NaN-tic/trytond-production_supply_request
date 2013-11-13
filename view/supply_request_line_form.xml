@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/separator[@id='reserve']" position="after">
+        <group id="production_fields" colspan="4" col="6">
+            <label name="to_produce"/>
+            <field name="to_produce"/>
+            <label name="production"/>
+            <field name="production"/>
+            <label name="production_state"/>
+            <field name="production_state"/>
+        </group>
+    </xpath>
+</data>
