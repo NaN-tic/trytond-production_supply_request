@@ -106,7 +106,7 @@ class SupplyRequestLine:
             warehouse=self.request.from_warehouse,
             location=self.request.from_warehouse.production_location,
             product=self.product,
-            bom=self.product.boms and self.product.boms[0].bom,
+            bom=self.product.boms and self.product.boms[0].bom or None,
             uom=self.unit,
             quantity=self.quantity,
             origin=self,
