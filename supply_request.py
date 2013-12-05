@@ -85,6 +85,8 @@ class SupplyRequestLine:
     def on_change_with_to_produce(self, name=None):
         if not self.product:
             return False
+        if not getattr(self.product, 'purchasable', False):
+            return True
         return not self.product.purchasable
 
     def get_production_state(self, name):
