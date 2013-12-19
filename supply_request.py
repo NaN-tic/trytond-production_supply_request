@@ -110,12 +110,15 @@ class SupplyRequestLine:
             warehouse=self.request.from_warehouse,
             location=self.request.from_warehouse.production_location,
             product=self.product,
-            bom=self.product.boms and self.product.boms[0].bom or None,
+            bom=self._production_bom(),
             uom=self.unit,
             quantity=self.quantity,
             origin=self,
             state='request')
         return production
+
+    def _production_bom(self):
+        return self.product.boms and self.product.boms[0].bom or None
 
     @classmethod
     def copy(cls, lines, default=None):
