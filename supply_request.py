@@ -4,6 +4,7 @@
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import And, Equal, Eval, Not
+from trytond.transaction import Transaction
 
 __all__ = ['SupplyRequest', 'SupplyRequestLine']
 __metaclass__ = PoolMeta
@@ -45,12 +46,15 @@ class SupplyRequest:
         for request in requests:
             for line in request.lines:
                 if line.to_produce:
-                    production = line.get_production()
-                    production.save()
+                    with Transaction().set_user(0, set_context=True):
+                        production = line.get_production()
+                        production.save()
 
                     bom_exploded_vals = prepare_write_vals(
                         production.on_change_bom())
-                    Production.write([production], bom_exploded_vals)
+                    if bom_exploded_vals:
+                        with Transaction().set_user(0, set_context=True):
+                            Production.write([production], bom_exploded_vals)
 
                     line.production = production
                     line.save()
