@@ -1,0 +1,51 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:production:"
+msgid ""
+"The product of the production \"%s\" is different than its origin Supply "
+"Request."
+msgstr ""
+"El producto de la producción \"%s\" es diferente al de la solicitud de "
+"abastecimiento de origen."
+
+msgctxt "error:production:"
+msgid ""
+"The production \"%(production)s\" is relate the supply request "
+"\"%(request)s\" so you can't delete it."
+msgstr ""
+"La producción \"%(production)s\" está relacionada con la solicitud de "
+"abastecimiento \"%(request)s\" por lo que "
+
+msgctxt "field:production,from_supply_request:"
+msgid "From Supply Request"
+msgstr "Proviene de solicitud de abastecimiento"
+
+msgctxt "field:stock.supply_request.line,production:"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "field:stock.supply_request.line,production_state:"
+msgid "Production State"
+msgstr "Estado producción"
+
+msgctxt "field:stock.supply_request.line,to_produce:"
+msgid "To Produce"
+msgstr "A producir"
+
+msgctxt "selection:stock.supply_request.line,production_state:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgctxt "selection:stock.supply_request.line,production_state:"
+msgid "Done"
+msgstr "Realizado"
+
+msgctxt "selection:stock.supply_request.line,production_state:"
+msgid "In Progress"
+msgstr "En progreso"
+
+msgctxt "selection:stock.supply_request.line,production_state:"
+msgid "Pending"
+msgstr "Pendiente"
