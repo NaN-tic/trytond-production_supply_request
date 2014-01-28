@@ -18,9 +18,10 @@ msgctxt "field:production,from_supply_request:"
 msgid "From Supply Request"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.supply_request.line,production:"
 msgid "Production"
-msgstr ""
+msgstr "Producció"
 
 msgctxt "field:stock.supply_request.line,production_state:"
 msgid "Production State"
@@ -30,18 +31,21 @@ msgctxt "field:stock.supply_request.line,to_produce:"
 msgid "To Produce"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.supply_request.line,production_state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Cancel·lat"
 
+#, fuzzy
 msgctxt "selection:stock.supply_request.line,production_state:"
 msgid "Done"
-msgstr ""
+msgstr "Realitzat"
 
 msgctxt "selection:stock.supply_request.line,production_state:"
 msgid "In Progress"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.supply_request.line,production_state:"
 msgid "Pending"
-msgstr ""
+msgstr "Pendent"
