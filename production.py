@@ -10,8 +10,8 @@ __metaclass__ = PoolMeta
 class Production:
     __name__ = 'production'
 
-    from_supply_request = fields.Function(
-        fields.Boolean('From Supply Request', on_change_with=['origin']),
+    from_supply_request = fields.Function(fields.Boolean('From Supply Request',
+            on_change_with=['origin']),
         'on_change_with_from_supply_request')
 
     @classmethod
@@ -39,11 +39,11 @@ class Production:
     def validate(cls, productions):
         super(Production, cls).validate(productions)
         for production in productions:
-            if production.from_supply_request:
-                production.check_origin_supply_request()
+            production.check_origin_supply_request()
 
     def check_origin_supply_request(self):
-        if self.origin.product.id != self.product.id:
+        if (self.from_supply_request and
+                self.origin.product.id != self.product.id):
             self.raise_user_error('invalid_product_origin', self.rec_name)
 
     @classmethod
