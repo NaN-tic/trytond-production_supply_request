@@ -7,45 +7,45 @@ msgid ""
 "The product of the production \"%s\" is different than its origin Supply "
 "Request."
 msgstr ""
+"El producte de la producció \"%s\" és diferent al de la sol·licitud "
+"d'abastiment d'origen."
 
 msgctxt "error:production:"
 msgid ""
 "The production \"%(production)s\" is relate the supply request "
 "\"%(request)s\" so you can't delete it."
 msgstr ""
+"La producció \"%(production)s\" està associada a la sol·licitud d'abastiment"
+" \"%(request)s\" i no es pot eliminar."
 
 msgctxt "field:production,from_supply_request:"
 msgid "From Supply Request"
-msgstr ""
+msgstr "Prové d'una sol·licitud d'abastiment"
 
-#, fuzzy
 msgctxt "field:stock.supply_request.line,production:"
 msgid "Production"
 msgstr "Producció"
 
 msgctxt "field:stock.supply_request.line,production_state:"
 msgid "Production State"
-msgstr ""
+msgstr "Estat producció"
 
 msgctxt "field:stock.supply_request.line,to_produce:"
 msgid "To Produce"
-msgstr ""
+msgstr "A produir"
 
-#, fuzzy
 msgctxt "selection:stock.supply_request.line,production_state:"
 msgid "Canceled"
 msgstr "Cancel·lat"
 
-#, fuzzy
 msgctxt "selection:stock.supply_request.line,production_state:"
 msgid "Done"
 msgstr "Realitzat"
 
 msgctxt "selection:stock.supply_request.line,production_state:"
 msgid "In Progress"
-msgstr ""
+msgstr "En progrés"
 
-#, fuzzy
 msgctxt "selection:stock.supply_request.line,production_state:"
 msgid "Pending"
 msgstr "Pendent"
