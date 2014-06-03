@@ -10,8 +10,8 @@ __metaclass__ = PoolMeta
 class Production:
     __name__ = 'production'
 
-    from_supply_request = fields.Function(fields.Boolean('From Supply Request',
-            on_change_with=['origin']),
+    from_supply_request = fields.Function(fields.Boolean(
+            'From Supply Request'),
         'on_change_with_from_supply_request')
 
     @classmethod
@@ -25,6 +25,7 @@ class Production:
                 'so you can\'t delete it.',
             })
 
+    @fields.depends('origin')
     def on_change_with_from_supply_request(self, name=None):
         pool = Pool()
         SupplyRequestLine = pool.get('stock.supply_request.line')
@@ -69,25 +70,27 @@ class Production:
         return Move.assign_try([reservation])
 
     @classmethod
-    def write(cls, productions, vals):
+    def write(cls, *args):
         pool = Pool()
         Uom = pool.get('product.uom')
 
-        super(Production, cls).write(productions, vals)
-        if 'quantity' in vals or 'uom' in vals:
-            for production in productions:
-                if not production.from_supply_request:
-                    continue
+        super(Production, cls).write(*args)
+        actions = iter(args)
+        for productions, vals in zip(actions, actions):
+            if 'quantity' in vals or 'uom' in vals:
+                for production in productions:
+                    if not production.from_supply_request:
+                        continue
 
-                quantity = vals.get('quantity', production.quantity)
-                uom = vals.get('uom', production.uom)
-                reservation_move = production.origin.move
-                if uom != reservation_move.uom:
-                    quantity = Uom.compute_qty(uom, quantity,
-                        reservation_move.uom)
-                if quantity != reservation_move.quantity:
-                    reservation_move.quantity = quantity
-                    reservation_move.save()
+                    quantity = vals.get('quantity', production.quantity)
+                    uom = vals.get('uom', production.uom)
+                    reservation_move = production.origin.move
+                    if uom != reservation_move.uom:
+                        quantity = Uom.compute_qty(uom, quantity,
+                            reservation_move.uom)
+                    if quantity != reservation_move.quantity:
+                        reservation_move.quantity = quantity
+                        reservation_move.save()
 
     @classmethod
     def delete(cls, productions):
