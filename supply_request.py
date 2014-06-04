@@ -63,8 +63,8 @@ class SupplyRequest:
 class SupplyRequestLine:
     __name__ = 'stock.supply_request.line'
 
-    to_produce = fields.Function(fields.Boolean('To Produce',
-        on_change_with=['product']), 'on_change_with_to_produce')
+    to_produce = fields.Function(fields.Boolean('To Produce'),
+        'on_change_with_to_produce')
     production = fields.Many2One('production', 'Production', readonly=True,
         domain=[
             ('product', '=', Eval('product')),
@@ -86,6 +86,7 @@ class SupplyRequestLine:
                 }, depends=['to_produce']),
         'get_production_state')
 
+    @fields.depends('product')
     def on_change_with_to_produce(self, name=None):
         if not self.product:
             return False
