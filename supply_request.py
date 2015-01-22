@@ -15,7 +15,8 @@ def prepare_write_vals(values):
         if set(values.keys()) <= set(['add', 'remove']):
             res = []
             if 'add' in values.keys():
-                res.append(('create', prepare_write_vals(values['add'])))
+                res.append(('create',
+                        prepare_write_vals([v[1] for v in values['add']])))
             if 'remove' in values.keys():
                 res.append(('delete', values['remove']))
         else:
