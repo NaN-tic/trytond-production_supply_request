@@ -83,7 +83,10 @@ class Production:
                         continue
 
                     quantity = vals.get('quantity', production.quantity)
-                    uom = vals.get('uom', production.uom)
+                    if vals.get('uom'):
+                        uom = Uom(vals['uom'])
+                    else:
+                        uom = production.uom
                     reservation_move = production.origin.move
                     if uom != reservation_move.uom:
                         quantity = Uom.compute_qty(uom, quantity,
