@@ -120,7 +120,7 @@ class SupplyRequestLine:
             uom=self.unit,
             quantity=self.quantity,
             origin=self,
-            state='request')
+            state='draft')
         return production
 
     def _production_bom(self):
