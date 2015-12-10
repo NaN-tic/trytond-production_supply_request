@@ -14,9 +14,10 @@ Podremos consultar el |production_state| en cada línea de sol·licitud, que
 podrá tener los siguientes valores:
 
  * *Pendiente*: La producción aún no se ha iniciado
- * *En progreso*: Los materiales se estan producciendo.
- * *Realizado*: La produccion se ha realizado, y tenemos los materiales en el
-   almacen de origen.
+ * *En progreso*: Los materiales se estan produciendo; la producción esta en espera, 
+   reservada o ejecutándose.
+ * *Realizado*: La producción se ha realizado, y tenemos los materiales en el
+   almacén de origen.
 
 .. |planned_date| field:: production/planned_date
 .. |production_state| field:: stock.supply_request.line/production_state
