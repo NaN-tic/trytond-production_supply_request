@@ -10,11 +10,11 @@ el campo |to_produce|.
 Si la línea es |to_produce| se crea la producción en estado *Borrador* y con
 la |planned_date| de la línea.
 
-Podremos consultar el |production_state| en cada línea de sol·licitud, que
+Podremos consultar el |production_state| en cada línea de solicitud, que
 podrá tener los siguientes valores:
 
  * *Pendiente*: La producción aún no se ha iniciado
- * *En progreso*: Los materiales se estan produciendo; la producción esta en espera, 
+ * *En progreso*: Los materiales se están produciendo; la producción esta en espera, 
    reservada o ejecutándose.
  * *Realizado*: La producción se ha realizado, y tenemos los materiales en el
    almacén de origen.
