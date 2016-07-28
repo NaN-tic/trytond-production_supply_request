@@ -40,22 +40,14 @@ class SupplyRequest:
     @ModelView.button
     @Workflow.transition('confirmed')
     def confirm(cls, requests):
-        pool = Pool()
-        Production = pool.get('production')
-
         super(SupplyRequest, cls).confirm(requests)
         for request in requests:
             for line in request.lines:
                 if line.to_produce:
                     with Transaction().set_user(0, set_context=True):
                         production = line.get_production()
+                        production.on_change_bom()
                         production.save()
-
-                    bom_exploded_vals = prepare_write_vals(
-                        production.on_change_bom())
-                    if bom_exploded_vals:
-                        with Transaction().set_user(0, set_context=True):
-                            Production.write([production], bom_exploded_vals)
 
                     line.production = production
                     line.save()
