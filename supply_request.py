@@ -104,6 +104,7 @@ class SupplyRequestLine:
         production = Production(
             reference=self.request.rec_name,
             planned_date=self.request.date.date(),
+            planned_start_date=self.request.date.date(),
             company=self.request.company,
             warehouse=self.request.from_warehouse,
             location=self.request.from_warehouse.production_location,
