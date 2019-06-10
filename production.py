@@ -2,28 +2,18 @@
 # copyright notices and license terms.
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
+from trytond.exceptions import UserError
+from trytond.i18n import gettext
 
 __all__ = ['Production']
-__metaclass__ = PoolMeta
 
 
-class Production:
+class Production(metaclass=PoolMeta):
     __name__ = 'production'
 
     from_supply_request = fields.Function(fields.Boolean(
             'From Supply Request'),
         'on_change_with_from_supply_request')
-
-    @classmethod
-    def __setup__(cls):
-        super(Production, cls).__setup__()
-        cls._error_messages.update({
-            'invalid_product_origin': 'The product of the production "%s" is '
-                'different than its origin Supply Request.',
-            'production_related_to_supply_request': 'The production '
-                '"%(production)s" is relate the supply request "%(request)s" '
-                'so you can\'t delete it.',
-            })
 
     @fields.depends('origin')
     def on_change_with_from_supply_request(self, name=None):
@@ -45,7 +35,9 @@ class Production:
     def check_origin_supply_request(self):
         if (self.from_supply_request and
                 self.origin.product.id != self.product.id):
-            self.raise_user_error('invalid_product_origin', self.rec_name)
+            raise UserError(gettext(
+                    'production_supply_request.msg_invalid_product_origin',
+                    production=self.rec_name))
 
     @classmethod
     @ModelView.button
@@ -105,8 +97,9 @@ class Production:
                     ('production', '=', production.id),
                     ])
             if request_line:
-                cls.raise_user_error('production_related_to_supply_request', {
-                        'production': production.rec_name,
-                        'request': request_line[0].request.rec_name,
-                        })
+                raise UserError(gettext('production_supply_request.'
+                        'msg_production_related_to_supply_request',
+                        production=production.rec_name,
+                        request=request_line[0].request.rec_name,
+                        ))
         super(Production, cls).delete(productions)

@@ -7,7 +7,6 @@ from trytond.pyson import And, Equal, Eval, Not
 from trytond.transaction import Transaction
 
 __all__ = ['SupplyRequest', 'SupplyRequestLine']
-__metaclass__ = PoolMeta
 
 
 def prepare_write_vals(values):
@@ -21,7 +20,7 @@ def prepare_write_vals(values):
                 res.append(('delete', values['remove']))
         else:
             res = {}
-            for key, value in values.iteritems():
+            for key, value in values.items():
                 if 'rec_name' in key or key == 'id':
                     continue
                 value = prepare_write_vals(value)
@@ -33,7 +32,7 @@ def prepare_write_vals(values):
     return values
 
 
-class SupplyRequest:
+class SupplyRequest(metaclass=PoolMeta):
     __name__ = 'stock.supply_request'
 
     @classmethod
@@ -53,7 +52,7 @@ class SupplyRequest:
                     line.save()
 
 
-class SupplyRequestLine:
+class SupplyRequestLine(metaclass=PoolMeta):
     __name__ = 'stock.supply_request.line'
 
     to_produce = fields.Function(fields.Boolean('To Produce'),
