@@ -24,7 +24,7 @@ class Production(metaclass=PoolMeta):
     @classmethod
     def _get_origin(cls):
         res = super(Production, cls)._get_origin()
-        return res + ['stock.supply_request.line']
+        return res | {'stock.supply_request.line'}
 
     @classmethod
     def validate(cls, productions):
