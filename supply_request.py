@@ -71,7 +71,7 @@ class SupplyRequestLine(metaclass=PoolMeta):
                 ('pending', 'Pending'),
                 ('in_progress', 'In Progress'),
                 ('done', 'Done'),
-                ('cancel', 'Canceled'),
+                ('cancelled', "Cancelled"),
                 ], 'Production State',
             states={
                 'invisible': Not(Eval('to_produce', False)),
