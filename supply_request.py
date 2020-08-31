@@ -90,7 +90,7 @@ class SupplyRequestLine(metaclass=PoolMeta):
         if (not self.production
                 or self.production.state in ('request', 'draft')):
             return 'pending'
-        if self.production.state in ('done', 'cancel'):
+        if self.production.state in ('done', 'cancelled'):
             return self.production.state
         return 'in_progress'
 
