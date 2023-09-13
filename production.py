@@ -78,11 +78,11 @@ class Production(metaclass=PoolMeta):
                     if vals.get('uom'):
                         uom = Uom(vals['uom'])
                     else:
-                        uom = production.uom
+                        uom = production.unit
                     reservation_move = production.origin.move
-                    if uom != reservation_move.uom:
+                    if uom != reservation_move.unit:
                         quantity = Uom.compute_qty(uom, quantity,
-                            reservation_move.uom)
+                            reservation_move.unit)
                     if quantity != reservation_move.quantity:
                         reservation_move.quantity = quantity
                         reservation_move.save()
