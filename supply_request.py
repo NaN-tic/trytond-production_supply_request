@@ -66,7 +66,7 @@ class SupplyRequestLine(metaclass=PoolMeta):
             'required': And(Eval('to_produce', False),
                 Equal(Eval('_parent_request.state'), 'confirmed')),
             'invisible': Not(Eval('to_produce', False)),
-            }, depends=['to_produce', 'product', 'id'])
+            })
     production_state = fields.Function(fields.Selection([
                 ('pending', 'Pending'),
                 ('in_progress', 'In Progress'),
@@ -75,7 +75,7 @@ class SupplyRequestLine(metaclass=PoolMeta):
                 ], 'Production State',
             states={
                 'invisible': Not(Eval('to_produce', False)),
-                }, depends=['to_produce']),
+                }),
         'get_production_state')
 
     @fields.depends('product')
