@@ -42,8 +42,8 @@ class Production(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(cls, productions):
-        super(Production, cls).done(productions)
+    def do(cls, productions):
+        super(Production, cls).do(productions)
         for production in productions:
             if production.from_supply_request:
                 for output in production.outputs:
