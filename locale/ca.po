@@ -2,22 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:production:"
-msgid ""
-"The product of the production \"%s\" is different than its origin Supply "
-"Request."
-msgstr ""
-"El producte de la producció \"%s\" és diferent al de la sol·licitud "
-"d'abastiment d'origen."
-
-msgctxt "error:production:"
-msgid ""
-"The production \"%(production)s\" is relate the supply request "
-"\"%(request)s\" so you can't delete it."
-msgstr ""
-"La producció \"%(production)s\" està associada a la sol·licitud d'abastiment"
-" \"%(request)s\" i no es pot eliminar."
-
 msgctxt "field:production,from_supply_request:"
 msgid "From Supply Request"
 msgstr "Prové d'una sol·licitud d'abastiment"
