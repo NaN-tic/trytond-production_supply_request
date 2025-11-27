@@ -3,6 +3,7 @@
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.exceptions import UserError
+from trytond.model.exceptions import ValidationError
 from trytond.i18n import gettext
 
 __all__ = ['Production']
@@ -35,7 +36,7 @@ class Production(metaclass=PoolMeta):
     def check_origin_supply_request(self):
         if (self.from_supply_request and
                 self.origin.product.id != self.product.id):
-            raise UserError(gettext(
+            raise ValidationError(gettext(
                     'production_supply_request.msg_invalid_product_origin',
                     production=self.rec_name))
 
